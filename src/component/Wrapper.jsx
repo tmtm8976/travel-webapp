@@ -13,10 +13,11 @@ export default function Wrapper() {
   
 
   return (
-    <div className='bg-white grid grid-cols-3 gap-10 p-10 w-4/5'> 
+    <div className='bg-white flex flex-wrap flex-row gap-20 p-10 w-4/5'> 
         {cardItems.map((it)=>
             <Card image={it.img} title={it.title} desc={it.desc}/>
         )}
     </div>
   )
 }
+  
