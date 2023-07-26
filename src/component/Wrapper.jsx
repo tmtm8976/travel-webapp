@@ -15,6 +15,10 @@ export default function Wrapper() {
   {img: "images/girl-on-stairs.jpg", title:"Explore", desc:"Visit the world best places"},
 ]);
 
+const showl = "animate-fadeIn z-20 shadow-lg bg-white hover:scale-105 ease-in-out duration-300 rounded-full m-3 border-gray-400 border-solid border absolute top-4/6 left-1 ";
+const hidel = "animate-fadeOut z-20 shadow-lg bg-white hover:scale-105 ease-in-out duration-300 rounded-full m-3 border-gray-400 border-solid border absolute top-4/6 left-1 ";
+const showr = "animate-fadeIn z-10 shadow-lg bg-white hover:scale-105 ease-in-out duration-300 rounded-full m-3 border-gray-400 border-solid border absolute top-4/6 right-0 ";
+const hider ="animate-fadeOut z-10 shadow-lg bg-white hover:scale-105 ease-in-out duration-300 rounded-full m-3 border-gray-400 border-solid border absolute top-4/6 right-0 ";
 
 const [maxScroll, setMaxScroll] = useState(false);
 const [minScroll, setMinScroll] = useState(true);
@@ -31,7 +35,7 @@ const [minScroll, setMinScroll] = useState(true);
 
   const handleScroll = () => {
     const slider = document.getElementById('slider');
-    if (slider.scrollLeft === 0) {
+    if (slider.scrollLeft < 20) {
       setMinScroll(true);
     } else {
       setMinScroll(false);
@@ -54,35 +58,31 @@ const [minScroll, setMinScroll] = useState(true);
   
 
   return (<>
-    <div className='relative flex items-center'>
+    <div className='relative flex items-center bg-white'>
 
     {/* slider left arrow */}
-    {!minScroll && (
         <MdChevronLeft
           size={40}
-          className='animate-fadeIn z-20 shadow-lg bg-white hover:scale-105 ease-in-out duration-300 rounded-full m-3 border-gray-400 border-solid border absolute top-4/6 left-1 '
+          className={!minScroll? showl : hidel}
           onClick={slideLeft}
         />
-      )}
 
 
       <div id='slider' className='relative flex overflow-x-scroll scroll scroll-smooth w-full'>
-          <div className='m-32 hidden md:block lg:block xl:block'></div>
+          <div className='m-32 hidden md:block'></div>
           {cardItems.map((it)=>
               <Card image={it.img} title={it.title} desc={it.desc}/>
           )}
-          <div className='m-32'></div>
+          <div className='m-32 hidden md:block'></div>
       </div>
       <div className='bg-gray-200 absolute w-full h-1/2 top-1/2'></div> 
 
       {/* slider right arrow */}
-      {!maxScroll && (
         <MdChevronRight
           size={40}
-          className='animate-fadeIn z-10 shadow-lg bg-white hover:scale-105 ease-in-out duration-300 rounded-full m-3 border-gray-400 border-solid border absolute top-4/6 right-0 '
+          className={!maxScroll? showr : hider}
           onClick={slideRight}
         />
-      )}
 
     </div>
     </>

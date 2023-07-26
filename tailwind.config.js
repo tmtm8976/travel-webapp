@@ -10,7 +10,7 @@ module.exports = {
       // that is animation class
       animation: {
         fadeIn: 'fadeInUp 0.5s ease-in-out',
-        fadeOut: 'fadeOutDown 1s both'
+        fadeOut: 'fadeOutDown 0.5s both'
       },
 
       // that is actual animation

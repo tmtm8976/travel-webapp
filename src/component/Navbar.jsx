@@ -1,12 +1,19 @@
-import React from 'react'
+import {useContext} from 'react'
+import {FaRegUserCircle} from 'react-icons/fa'
+import { userContext } from '../App';
 
 export default function Navbar() {
+
+  const user = useContext(userContext);
+  console.log(user);
+
+
   return (
     <div>
-    <nav className="bg-transparent ">
+    <nav className="relative z-10">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="/" className="flex items-center">
-          <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Moon Travels</span>
+          <span className="self-center md:text-2xl font-semibold whitespace-nowrap text-white">Moon Travels</span>
       </a>
       <div className="flex md:order-2">
         <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1" >
@@ -15,6 +22,22 @@ export default function Navbar() {
           </svg>
           <span className="sr-only">Search</span>
         </button>
+
+
+        {/* account */}
+        <div>
+          { typeof user != 'undefined' ? 
+            <img src={user.profile_pic} className='w-8 rounded-full'></img>
+          :
+            <a href="./signUP">
+              <FaRegUserCircle className='text-white w-8 m-3'/>
+          </a>
+          
+          }
+        </div>
+
+
+
         <div className="relative hidden md:block bg-transparent">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg className="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
