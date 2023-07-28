@@ -1,11 +1,34 @@
 import {useContext} from 'react'
 import {FaRegUserCircle} from 'react-icons/fa'
-import { userContext } from '../App';
+import { userContext } from '../routes/App';
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
 
   const user = useContext(userContext);
   console.log(user);
+
+  const account = (user)=>{
+    if (typeof user != 'undefined') {
+      if (user.profile_pic!="") {
+        return(
+          <Link>
+          <img src={user.profile_pic} className='w-8 rounded-full'></img>
+          </Link>
+          )
+      }
+      else return (
+      <Link>
+         <FaRegUserCircle className='text-white w-8 m-3'/>
+        </Link>
+        )
+    }
+    else return (
+        <Link  to={`account`} className='block py-2 pl-3 pr-4 text-white rounded md:bg-transparent  md:p-0 text-xs underline'>
+         sign up
+        </Link>
+    )
+  }
 
 
   return (
@@ -13,7 +36,7 @@ export default function Navbar() {
     <nav className="relative z-10">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="/" className="flex items-center">
-          <span className="self-center md:text-2xl font-semibold whitespace-nowrap text-white">Moon Travels</span>
+          <span className="self-center md:text-2xl font-semibold whitespace-nowrap text-white text-xs">Moon Travels</span>
       </a>
       <div className="flex md:order-2">
         <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1" >
@@ -25,16 +48,7 @@ export default function Navbar() {
 
 
         {/* account */}
-        <div>
-          { typeof user != 'undefined' ? 
-            <img src={user.profile_pic} className='w-8 rounded-full'></img>
-          :
-            <a href="./signUP">
-              <FaRegUserCircle className='text-white w-8 m-3'/>
-          </a>
-          
-          }
-        </div>
+         <div className='p-3 hover:backdrop-blur-sm hover:shadow-md '> {account(user)}</div>
 
 
 
@@ -45,7 +59,7 @@ export default function Navbar() {
             </svg>
             <span className="sr-only">Search icon</span>
           </div>
-          <input type="text" id="search-navbar" className="block bg-transparent w-full p-2 pl-10 text-sm text-white borde rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..."/>
+          <input type="text" id="search-navbar" className="block bg-transparent w-full p-2 pl-10 text-sm placeholder-white text-white borde rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-white dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..."/>
         </div>
         <button data-collapse-toggle="navbar-search" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
             <span className="sr-only">Open main menu</span>
@@ -57,7 +71,7 @@ export default function Navbar() {
         <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
           <div className="relative mt-3 md:hidden">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+              <svg className="w-4 h-4 text-white dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
               </svg>
             </div>
@@ -65,13 +79,13 @@ export default function Navbar() {
           </div>
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0  \ dark:border-gray-700">
             <li>
-              <a href="#" className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent  md:p-0 " aria-current="page">Home</a>
+              <a href="#" className="hover:backdrop-blur-sm hover:shadow-md block py-2 pl-3 pr-4 text-white rounded md:bg-transparent" aria-current="page">Home</a>
             </li>
             <li>
-              <a href="#" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+              <a href="#" className="hover:backdrop-blur-sm hover:shadow-md block py-2 pl-3 pr-4 text-white rounded">About</a>
             </li>
             <li>
-              <a href="#" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+              <a href="#" className="hover:backdrop-blur-sm hover:shadow-md block py-2 pl-3 pr-4 text-white rounde">Services</a>
             </li>
           </ul>
         </div>

@@ -5,7 +5,7 @@ export default function Card({image, title, desc}) {
     <div className='z-10 m-3'><div
     className="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 ">
     <div
-      class="relative overflow-hidden bg-cover bg-no-repeat w-72 h-48"
+      class="relative overflow-hidden bg-cover bg-no-repeat w-60 h-48"
       data-te-ripple-init
       data-te-ripple-color="light">
       <div className='align-middle w-full'>
