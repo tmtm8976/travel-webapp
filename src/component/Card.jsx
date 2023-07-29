@@ -1,4 +1,5 @@
 import React from 'react'
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Card({image, title, desc}) {
   return (
@@ -9,7 +10,7 @@ export default function Card({image, title, desc}) {
       data-te-ripple-init
       data-te-ripple-color="light">
       <div className='align-middle w-full'>
-      <img
+      <LazyLoadImage
         class="rounded-t-lg w-full"
         src={image}
         alt="" />

@@ -1,4 +1,5 @@
 import React from 'react'
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function About() {
   const txt = `
@@ -21,7 +22,7 @@ export default function About() {
 
       <div className='flex flex-col lg:flex-row xl:flex-row relative h-fit items-center'>
         <div className='border-gray-800 rounded-xl border-4 w-[70vw] h-[70vw] md:w-[40vw] md:h-[40vw] lg:h-[30vw] relative m-10'>
-            <img src="images/mesume.jpg" alt="" className='absolute left-4 top-4 rounded-xl' />
+            <LazyLoadImage src="images/mesume.jpg" alt="" className='absolute left-4 top-4 rounded-xl' />
         </div>
         <div className='md:ml-10 mt-5 w-3/4 '>
           <span className='text-xs'>S T O R I E S</span>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Heroslider() {
   const heroImages = [
@@ -28,7 +29,7 @@ export default function Heroslider() {
 
   return (
     <div id='slide' className='flex overflow-x-scroll scroll scroll-smooth h-full no-scrollbar'>
-      {images.map(i => <img key={i} src={i} alt='Hero Image' className='object-cover h-[80vh] md:h-[70vh] lg:h-auto'/>)}
+      {images.map(i => <img key={i} src={i} alt='Hero Image' className='object-cover h-[80vh] md:h-[70vh] lg:w-full lg:h-auto'/>)}
     </div>
   );
 }
