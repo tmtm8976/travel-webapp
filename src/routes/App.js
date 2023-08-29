@@ -1,9 +1,9 @@
 import { useState, createContext, useEffect } from "react";
-import About from "../component/About";
-import Explore from "../component/Explore";
-import Footer from "../component/Footer";
-import Hero from "../component/Hero";
-import Navbar from "../component/Navbar";
+import { Home } from "../pages/Home";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Accounts from "../pages/auth/Accounts";
+import { Layout } from "../component/layout/Layout";
+
 
 export const userContext = createContext();
 
@@ -25,15 +25,12 @@ function App() {
   
 
   return (
-    <div className="App">
-      <userContext.Provider value={user}>
-        <Navbar/>
-        <Hero/>
-        <Explore/>
-        <About/>
-        <Footer/>
-      </userContext.Provider>
-    </div>
+    <Layout>
+    <Routes>
+        <Route path="/" element={<Home/>}/> 
+        <Route path="/login" element={<Accounts/>}/> 
+    </Routes>
+    </Layout>
   );
 }
 

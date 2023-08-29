@@ -1,6 +1,6 @@
 import {useContext} from 'react'
 import {FaRegUserCircle} from 'react-icons/fa'
-import { userContext } from '../routes/App';
+import { userContext } from '../../../routes/App';
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
@@ -24,7 +24,7 @@ export default function Navbar() {
         )
     }
     else return (
-        <Link  to={`account`} className='block py-2 pl-3 pr-4 text-white rounded md:bg-transparent  md:p-0 text-xs underline'>
+        <Link  to={`login`} className='block py-2 pl-3 pr-4 text-white rounded md:bg-transparent  md:p-0 text-xs underline'>
          sign up
         </Link>
     )
@@ -66,7 +66,7 @@ export default function Navbar() {
           </div>
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0  \ dark:border-gray-700">
             <li>
-              <a href="#" className="hover:backdrop-blur-sm hover:shadow-md block py-2 pl-3 pr-4 text-white rounded-lg" aria-current="page">Home</a>
+              <Link to={'/'} className="hover:backdrop-blur-sm hover:shadow-md block py-2 pl-3 pr-4 text-white rounded-lg" aria-current="page">Home</Link>
             </li>
             <li>
               <a href="#" className="hover:backdrop-blur-sm hover:shadow-md block py-2 pl-3 pr-4 text-white rounded-lg">About</a>

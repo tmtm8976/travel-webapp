@@ -5,14 +5,11 @@ import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 export default function Wrapper() {
 
   const [cardItems, setCardItems] = useState([
-  {img: "images/hb.jpg", title:"Explore", desc:"Visit the world best places"},{img: "images/rocket.jpg", title:"Explore", desc:"Visit the world best places"},
-  {img: "images/plane.jpg", title:"Explore", desc:"Visit the world best places"},
   {img: "images/grape-plate.jpg", title:"Explore", desc:"Visit the world best places"},
   {img: "images/girl-by-wall.jpg", title:"Explore", desc:"Visit the world best places"},
   {img: "images/park-squad.jpg", title:"Explore", desc:"Visit the world best places"},
   {img: "images/mesume.jpg", title:"Explore", desc:"Visit the world best places"},
   {img: "images/safari-hotel.jpg", title:"Explore", desc:"Visit the world best places"},
-  {img: "images/girl-on-stairs.jpg", title:"Explore", desc:"Visit the world best places"},
 ]);
 
 const showl = "animate-fadeIn z-20 shadow-lg bg-white hover:scale-105 ease-in-out duration-300 rounded-full m-3 border-gray-400 border-solid border absolute top-4/6 left-1 ";

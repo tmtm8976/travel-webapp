@@ -8,7 +8,10 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Error from './Error';
-import Accounts from './routes/Accounts'
+import Accounts from './pages/auth/Accounts'
+
+import { BrowserRouter } from 'react-router-dom';
+import Context from './context/Context';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +29,11 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <Context>
+        <App />
+      </Context>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
