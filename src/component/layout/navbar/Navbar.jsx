@@ -1,12 +1,14 @@
 import {useContext} from 'react'
 import {FaRegUserCircle} from 'react-icons/fa'
-import { userContext } from '../../../routes/App';
 import { Link } from "react-router-dom";
+import { gState } from '../../../context/Context'
+
 
 export default function Navbar() {
 
-  const user = useContext(userContext);
-  console.log(user);
+  const {data} = useContext(gState)
+  const {isLoggedIn , userData} = data
+  const {image} = userData
 
   const account = (user)=>{
     if (typeof user != 'undefined') {
@@ -44,8 +46,21 @@ export default function Navbar() {
 
 
 
-        {/* account */}
-         <div className='p-3 hover:backdrop-blur-sm hover:shadow-md rounded-lg'> {account(user)}</div>
+        {isLoggedIn && 
+            <Link>
+              <img src={image} className='w-8 rounded-full hover:backdrop-blur-sm hover:shadow-md'></img>
+            </Link>  
+        }
+
+        {
+          !isLoggedIn && 
+          <div className='p-3 hover:backdrop-blur-sm hover:shadow-md rounded-lg'>
+            <Link  to={`login`} className='block py-2 pl-3 pr-4 text-white rounded md:bg-transparent  md:p-0 text-xs underline'>
+              sign up
+            </Link>
+          </div>
+        }
+         
 
 
         <button data-collapse-toggle="navbar-search" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
